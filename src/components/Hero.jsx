@@ -1,0 +1,94 @@
+import React from 'react';
+import { ArrowRight, MessageSquare, Sparkles, CheckCircle2 } from 'lucide-react';
+import { COMPANY_INFO } from '../data/content';
+
+export default function Hero() {
+  return (
+    <section className="relative overflow-hidden pt-12 pb-24 md:pt-20 md:pb-32 bg-radial-gradient">
+      {/* Decorative background glow */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-atx-gold/10 blur-[130px] rounded-full pointer-events-none"></div>
+      <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-600/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-3xl mx-auto text-center">
+          
+          {/* Brand Logo Showcase */}
+          <div className="flex justify-center mb-8">
+            <div className="p-3 rounded-2xl bg-white/95 border-2 border-atx-gold/60 shadow-2xl gold-glow inline-block hover:scale-105 transition-transform duration-300">
+              <img
+                src="/atx-logo.jpg"
+                alt="ATX Technologies - Advanced Technology Xcellence"
+                className="h-24 sm:h-28 object-contain"
+              />
+            </div>
+          </div>
+
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-atx-navy-card/90 border border-atx-gold/30 text-atx-gold text-xs font-semibold uppercase tracking-wider mb-8 shadow-sm">
+            <Sparkles className="w-3.5 h-3.5 text-atx-gold animate-pulse" />
+            <span>AI-Driven Innovation & Digital Transformation</span>
+          </div>
+
+          {/* Headline */}
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.15] mb-6">
+            Building the Future with{' '}
+            <span className="gold-gradient-text">AI and Advanced Technology</span>
+          </h1>
+
+          {/* Subheading */}
+          <p className="text-lg sm:text-xl text-slate-300 font-normal leading-relaxed mb-10 max-w-2xl mx-auto">
+            ATX Technologies empowers businesses, founders, and professionals with practical AI automation, custom software engineering, strategic IT consulting, and real-world tech training.
+          </p>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
+            <a
+              href="#services"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-bold text-sm uppercase tracking-wider text-atx-navy-dark bg-gradient-to-r from-atx-gold to-atx-gold-light hover:brightness-110 shadow-lg shadow-atx-gold/20 transition-all"
+            >
+              <span>Explore Services</span>
+              <ArrowRight className="w-4 h-4" />
+            </a>
+            <a
+              href={COMPANY_INFO.whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm uppercase tracking-wider text-white bg-atx-navy-card hover:bg-atx-navy-light border border-atx-gold/30 hover:border-atx-gold transition-all"
+            >
+              <MessageSquare className="w-4 h-4 text-atx-gold" />
+              <span>Direct WhatsApp Discussion</span>
+            </a>
+          </div>
+
+          {/* Value Highlights */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-8 border-t border-atx-navy-border/70 text-left">
+            <div className="flex items-start gap-3 p-3 rounded-lg bg-atx-navy-card/40 border border-atx-navy-border/40">
+              <CheckCircle2 className="w-5 h-5 text-atx-gold flex-shrink-0 mt-0.5" />
+              <div>
+                <h4 className="text-sm font-semibold text-white">Practical AI Impact</h4>
+                <p className="text-xs text-slate-400">Zero fluff. Concrete automations that save actual business hours.</p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-3 p-3 rounded-lg bg-atx-navy-card/40 border border-atx-navy-border/40">
+              <CheckCircle2 className="w-5 h-5 text-atx-gold flex-shrink-0 mt-0.5" />
+              <div>
+                <h4 className="text-sm font-semibold text-white">Custom Engineering</h4>
+                <p className="text-xs text-slate-400">Tailored web platforms and software built for speed & conversion.</p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-3 p-3 rounded-lg bg-atx-navy-card/40 border border-atx-navy-border/40">
+              <CheckCircle2 className="w-5 h-5 text-atx-gold flex-shrink-0 mt-0.5" />
+              <div>
+                <h4 className="text-sm font-semibold text-white">Trusted Guidance</h4>
+                <p className="text-xs text-slate-400">Strategic consulting to invest only in technologies that move the needle.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+}
