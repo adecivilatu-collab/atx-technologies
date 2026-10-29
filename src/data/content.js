@@ -19,14 +19,15 @@ export const SERVICES = [
     id: "software-web",
     title: "Software & Web Development",
     subtitle: "Engineered for Performance & Growth",
-    shortDesc: "Custom web applications, responsive websites, mobile applications, and tailored software solutions.",
-    problem: "Generic website builders and off-the-shelf software often feel clunky, load slowly, and fail to reflect true enterprise credibility.",
-    solution: "We design and engineer bespoke digital platforms built with modern technology stacks that look prestigious, load instantly, and turn visitors into active clients.",
+    shortDesc: "High-performance business websites, high-converting landing pages, portfolio websites, website redesigns, and custom web applications.",
+    problem: "Generic website builders and off-the-shelf software often feel clunky, load slowly on mobile, and fail to convert visitors into paying clients.",
+    solution: "We design and engineer bespoke digital platforms built with modern technology stacks that look prestigious, load in under a second, and turn prospective clients into business inquiries.",
     capabilities: [
-      "Corporate & marketing web platforms",
-      "Scalable web applications (SaaS/Dashboards)",
-      "Mobile-optimized applications",
-      "Database architecture & secure APIs"
+      "Custom Business & Corporate Websites",
+      "High-Converting Lead-Gen Landing Pages",
+      "Portfolio Websites & Professional Showcases",
+      "Full Website Redesigns & Speed Modernization",
+      "Scalable Web Applications (SaaS/Dashboards)"
     ],
     icon: "Code2",
     highlight: "Core"
@@ -68,10 +69,10 @@ export const SERVICES = [
 export const COMPANY_INFO = {
   name: "ATX Technologies",
   fullMeaning: "Advanced Technology Xcellence",
-  tagline: "Building the Future with AI and Advanced Technology",
+  tagline: "Professional Websites & Practical AI for Businesses That Want to Grow",
   phoneDisplay: "0815 088 2291",
   whatsappNumber: "2348150882291",
-  whatsappLink: "https://wa.me/2348150882291?text=Hello%20ATX%20Technologies,%20I%20would%20like%20to%20inquire%20about%20your%20services.",
+  whatsappLink: "https://wa.me/2348150882291?text=Hello%20ATX%20Technologies,%20I%20would%20like%20to%20request%20a%20quote%20for%20a%20website%20or%20software%20project.",
   email: "atxtechnologies2026@gmail.com",
   mission: "To empower individuals and businesses through practical technology solutions, intelligent automation, and digital innovation.",
   vision: "To become a trusted technology partner recognised for making advanced technology useful, accessible, and impactful.",

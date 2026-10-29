@@ -1,5 +1,19 @@
 export const CASE_STUDIES = [
   {
+    id: "atx-platform",
+    title: "ATX Technologies — Flagship Corporate Web & AI Platform",
+    clientSector: "Featured Live Showcase",
+    isFeatured: true,
+    problem: "Growing businesses need prestigious, mobile-first web platforms that load in milliseconds, establish undeniable market authority, and convert visitors through direct, friction-free WhatsApp and quote channels.",
+    solution: "Engineered our bespoke flagship platform featuring sub-second page delivery, interactive guided AI assistance, structured quote estimators, and automated WhatsApp lead intake.",
+    results: [
+      { metric: "< 0.8s", label: "Mobile Page Load Speed" },
+      { metric: "99+", label: "Google Lighthouse Performance" },
+      { metric: "100%", label: "Direct WhatsApp Conversion Flow" }
+    ],
+    technologies: ["React", "Vite", "Tailwind CSS", "Netlify Edge", "Guided AI Assistant", "Responsive Mobile UX"]
+  },
+  {
     id: "retail-automation",
     title: "AI-Powered Customer Response & Order Pipeline",
     clientSector: "E-Commerce & Retail Distribution",
@@ -72,12 +86,20 @@ export const ARTICLES = [
 
 export const FAQ_LIST = [
   {
+    question: "What types of websites does ATX Technologies build?",
+    answer: "We design and engineer corporate business websites, high-converting marketing landing pages, professional portfolio sites, and complete redesigns of legacy or slow websites. All builds are custom-tailored, responsive on all devices, and optimized for sub-second mobile loading speeds."
+  },
+  {
+    question: "How do I request a quote or get an estimate for my project?",
+    answer: "You can request an instant quote either by clicking the 'Request a Quote (WhatsApp)' button for immediate discussion or by using our interactive project inquiry form below. We'll clarify your scope and provide a transparent, milestone-based proposal within 24 hours."
+  },
+  {
     question: "How does ATX Technologies approach AI automation for my business?",
     answer: "We focus exclusively on practical, outcome-driven AI. We start by auditing your current operational bottlenecks (e.g. customer inquiries, repetitive data entry, follow-ups) and deploy tailored assistants or automated pipelines that integrate with your existing tools like WhatsApp, email, and databases."
   },
   {
     question: "How long does a typical software or website development project take?",
-    answer: "Timelines depend on project scope. A modern, high-performance corporate platform typically takes 2 to 3 weeks, while custom web applications or automated business platforms range from 4 to 8 weeks with phased milestone deliveries."
+    answer: "Timelines depend on project scope. A modern, high-performance landing page or business platform typically takes 1 to 2 weeks, while custom web applications or automated business platforms range from 3 to 6 weeks with phased milestone deliveries."
   },
   {
     question: "Can ATX Technologies integrate solutions with our existing WhatsApp and internal tools?",
