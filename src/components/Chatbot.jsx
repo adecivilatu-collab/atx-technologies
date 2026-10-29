@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Bot, X, MessageSquare, ArrowUpRight, RotateCcw, Send } from 'lucide-react';
 import { CHATBOT_TREE } from '../data/chatbotTree';
+import { COMPANY_INFO } from '../data/content';
 
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,7 +30,6 @@ export default function Chatbot() {
     const nextKey = option.next;
     const nextNode = CHATBOT_TREE[nextKey];
 
-    // Add user's choice to history
     const updatedHistory = [
       ...history,
       { sender: 'user', text: option.label }
@@ -73,9 +73,23 @@ export default function Chatbot() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5">
       
-      {/* Floating Toggle Button */}
+      {/* 1-Tap Floating WhatsApp Enquiry Button */}
+      {!isOpen && (
+        <a
+          href={COMPANY_INFO.whatsappLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Direct WhatsApp Quote"
+          className="p-3.5 rounded-full bg-emerald-500 hover:bg-emerald-400 text-white shadow-2xl hover:scale-110 transition-all border-2 border-emerald-300/40 flex items-center justify-center group"
+          title="Direct WhatsApp Enquiry"
+        >
+          <MessageSquare className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+        </a>
+      )}
+
+      {/* Floating Toggle Button for Virtual Assistant */}
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
@@ -87,7 +101,7 @@ export default function Chatbot() {
           </div>
           <div className="text-left hidden sm:block">
             <p className="text-xs font-bold text-white tracking-wide">ATX Virtual Assistant</p>
-            <p className="text-[10px] text-atx-gold">Rule-Based Instant Help</p>
+            <p className="text-[10px] text-atx-gold">Instant Help & Quotes</p>
           </div>
           <span className="flex h-2.5 w-2.5 relative">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -114,7 +128,6 @@ export default function Chatbot() {
                 </div>
               </div>
             </div>
-
             <div className="flex items-center gap-1">
               <button
                 onClick={handleReset}
@@ -133,12 +146,12 @@ export default function Chatbot() {
             </div>
           </div>
 
-          {/* Assistant Disclaimer notice */}
+          {/* Sub-header announcement */}
           <div className="px-4 py-1.5 bg-atx-gold/10 border-b border-atx-gold/20 text-[10px] text-atx-gold text-center font-medium">
             Rule-based assistant • Connects directly to WhatsApp for live quotes
           </div>
 
-          {/* Messages Area */}
+          {/* Messages Body */}
           <div className="flex-1 p-4 overflow-y-auto space-y-4 text-xs">
             {history.map((msg, index) => (
               <div
@@ -155,7 +168,7 @@ export default function Chatbot() {
                   {msg.text}
                 </div>
 
-                {/* Direct Action Button (if present) */}
+                {/* Optional Action Button */}
                 {msg.action && (
                   <div className="mt-2.5">
                     <button
@@ -191,7 +204,7 @@ export default function Chatbot() {
           <div className="p-3 bg-atx-navy border-t border-atx-navy-border flex items-center justify-between text-[11px] text-slate-400">
             <span>Need human support?</span>
             <a
-              href="https://wa.me/2348150882291"
+              href={COMPANY_INFO.whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
               className="font-bold text-atx-gold hover:underline flex items-center gap-1"

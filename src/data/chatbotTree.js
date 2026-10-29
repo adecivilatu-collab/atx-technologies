@@ -2,19 +2,19 @@ export const CHATBOT_TREE = {
   welcome: {
     text: "Hello! Welcome to ATX Technologies (Advanced Technology Xcellence). I am your automated virtual assistant. How can I assist you today?",
     options: [
-      { label: "Explore Our 4 Core Services", next: "services_overview" },
-      { label: "Request a Project Quote / Consultation", next: "consultation" },
-      { label: "AI & Automation Solutions", next: "ai_details" },
+      { label: "Request a Website / Project Quote", next: "quote_action" },
+      { label: "View Live Portfolio & Demos", next: "portfolio_action" },
       { label: "Software & Web Development", next: "web_details" },
+      { label: "AI & Automation Solutions", next: "ai_details" },
       { label: "Technology Training Programs", next: "training_details" },
       { label: "Chat Directly on WhatsApp", next: "whatsapp_action" }
     ]
   },
   services_overview: {
-    text: "ATX Technologies delivers practical digital innovation across 4 key pillars:\n\n1. AI & Automation (Chatbots & workflow pipelines)\n2. Software & Web Development (Bespoke websites & apps)\n3. Digital Transformation & IT Consulting (Strategic modernizing)\n4. Technology Training (Practical AI, coding & tech skills)\n\nWhich area would you like to explore?",
+    text: "ATX Technologies delivers practical digital innovation across 4 key pillars:\n\n1. Software & Web Development (Business websites, landing pages, redesigns)\n2. AI & Automation (Chatbots & workflow pipelines)\n3. Digital Transformation & IT Consulting (Strategic modernizing)\n4. Technology Training (Practical AI, coding & tech skills)\n\nWhich area would you like to explore?",
     options: [
-      { label: "1. AI & Automation", next: "ai_details" },
-      { label: "2. Software & Web Development", next: "web_details" },
+      { label: "1. Web & Software Development", next: "web_details" },
+      { label: "2. AI & Automation", next: "ai_details" },
       { label: "3. IT Consulting", next: "consulting_details" },
       { label: "4. Technology Training", next: "training_details" },
       { label: "Return to Main Menu", next: "welcome" }
@@ -24,16 +24,29 @@ export const CHATBOT_TREE = {
     text: "Our AI & Automation solutions help eliminate repetitive tasks, improve client response times with smart assistants, and integrate intelligent workflows into your business operations.\n\nWould you like to discuss an AI solution for your business?",
     options: [
       { label: "Connect with us on WhatsApp", next: "whatsapp_action" },
-      { label: "Send an Email Inquiry", next: "email_action" },
+      { label: "Request a Quote", next: "quote_action" },
       { label: "View Other Services", next: "services_overview" }
     ]
   },
   web_details: {
-    text: "We engineer modern, ultra-fast web applications, corporate websites, and custom software systems designed to convert visitors and scale seamlessly.\n\nReady to build or revamp your digital presence?",
+    text: "We design and engineer high-performance business websites, high-converting landing pages, portfolio showcases, website redesigns, and custom web applications with sub-second mobile load speeds.\n\nReady to build or revamp your digital presence?",
     options: [
-      { label: "Discuss Your Project on WhatsApp", next: "whatsapp_action" },
+      { label: "Request a Website Quote on WhatsApp", next: "quote_action" },
+      { label: "View Portfolio & Demos", next: "portfolio_action" },
       { label: "Fill Out the Inquiry Form", next: "form_action" },
       { label: "View Other Services", next: "services_overview" }
+    ]
+  },
+  portfolio_action: {
+    text: "You can explore our live projects and case studies right here, starting with the ATX Technologies platform itself, featuring sub-second speeds and interactive AI.",
+    action: {
+      type: "scroll",
+      targetId: "case-studies",
+      buttonText: "Jump to Portfolio & Work"
+    },
+    options: [
+      { label: "Request a Project Quote", next: "quote_action" },
+      { label: "Back to Main Menu", next: "welcome" }
     ]
   },
   consulting_details: {
@@ -52,16 +65,20 @@ export const CHATBOT_TREE = {
       { label: "Main Menu", next: "welcome" }
     ]
   },
-  consultation: {
-    text: "We would love to learn more about your project. You can either chat with our team directly on WhatsApp for an immediate response or leave an inquiry through our contact form.",
+  quote_action: {
+    text: "We provide clear quotes and quick turnarounds for business websites, landing pages, and AI software. Click below to chat directly with our team on WhatsApp, or jump to our quote form.",
+    action: {
+      type: "link",
+      url: "https://wa.me/2348150882291?text=Hello%20ATX%20Technologies,%20I%20would%20like%20to%20request%20a%20quote%20for%20a%20new%20website/project.",
+      buttonText: "Request Quote on WhatsApp"
+    },
     options: [
-      { label: "Chat Immediately on WhatsApp", next: "whatsapp_action" },
-      { label: "Fill the Contact Form", next: "form_action" },
+      { label: "Fill the Quote Form Instead", next: "form_action" },
       { label: "Back to Menu", next: "welcome" }
     ]
   },
   whatsapp_action: {
-    text: "Click below to connect directly with an ATX Technologies specialist on WhatsApp (0815 088 2291). We will be glad to assist you!",
+    text: "Click below to connect directly with an ATX Technologies specialist on WhatsApp (0815 088 2291). We will be glad to assist you immediately!",
     action: {
       type: "link",
       url: "https://wa.me/2348150882291?text=Hello%20ATX%20Technologies,%20I%20am%20inquiring%20via%20the%20website%20assistant.",
@@ -83,7 +100,7 @@ export const CHATBOT_TREE = {
     action: {
       type: "scroll",
       targetId: "contact",
-      buttonText: "Jump to Contact Form"
+      buttonText: "Jump to Quote Form"
     },
     options: [
       { label: "Back to Main Menu", next: "welcome" }

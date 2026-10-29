@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, MessageSquare, Sparkles, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, MessageSquare, Sparkles, CheckCircle2, Globe, Zap, ShieldCheck } from 'lucide-react';
 import { COMPANY_INFO } from '../data/content';
 
 export default function Hero() {
@@ -26,27 +26,27 @@ export default function Hero() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-atx-navy-card/90 border border-atx-gold/30 text-atx-gold text-xs font-semibold uppercase tracking-wider mb-8 shadow-sm">
             <Sparkles className="w-3.5 h-3.5 text-atx-gold animate-pulse" />
-            <span>AI-Driven Innovation & Digital Transformation</span>
+            <span>Professional Web Engineering & Practical AI</span>
           </div>
 
-          {/* Headline */}
+          {/* Headline following landing page conversion practices */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.15] mb-6">
-            Building the Future with{' '}
-            <span className="gold-gradient-text">AI and Advanced Technology</span>
+            Professional Websites & Practical AI for{' '}
+            <span className="gold-gradient-text">Businesses That Want to Grow</span>
           </h1>
 
           {/* Subheading */}
           <p className="text-lg sm:text-xl text-slate-300 font-normal leading-relaxed mb-10 max-w-2xl mx-auto">
-            ATX Technologies empowers businesses, founders, and professionals with practical AI automation, custom software engineering, strategic IT consulting, and real-world tech training.
+            ATX Technologies builds prestigious corporate websites, high-converting landing pages, and practical AI automations designed to turn visitors into paying clients and eliminate repetitive work.
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
             <a
-              href="#services"
+              href="#case-studies"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-bold text-sm uppercase tracking-wider text-atx-navy-dark bg-gradient-to-r from-atx-gold to-atx-gold-light hover:brightness-110 shadow-lg shadow-atx-gold/20 transition-all"
             >
-              <span>Explore Services</span>
+              <span>View Our Work & Demos</span>
               <ArrowRight className="w-4 h-4" />
             </a>
             <a
@@ -55,34 +55,34 @@ export default function Hero() {
               rel="noopener noreferrer"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm uppercase tracking-wider text-white bg-atx-navy-card hover:bg-atx-navy-light border border-atx-gold/30 hover:border-atx-gold transition-all"
             >
-              <MessageSquare className="w-4 h-4 text-atx-gold" />
-              <span>Direct WhatsApp Discussion</span>
+              <MessageSquare className="w-4 h-4 text-emerald-400" />
+              <span>Request a Quote (WhatsApp)</span>
             </a>
           </div>
 
           {/* Value Highlights */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-8 border-t border-atx-navy-border/70 text-left">
-            <div className="flex items-start gap-3 p-3 rounded-lg bg-atx-navy-card/40 border border-atx-navy-border/40">
-              <CheckCircle2 className="w-5 h-5 text-atx-gold flex-shrink-0 mt-0.5" />
+            <div className="flex items-start gap-3 p-3.5 rounded-xl bg-atx-navy-card/60 border border-atx-navy-border/60">
+              <Globe className="w-5 h-5 text-atx-gold flex-shrink-0 mt-0.5" />
+              <div>
+                <h4 className="text-sm font-semibold text-white">High-Converting Websites</h4>
+                <p className="text-xs text-slate-400">Business sites, landing pages, and redesigns optimized for mobile speed and sales.</p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-3 p-3.5 rounded-xl bg-atx-navy-card/60 border border-atx-navy-border/60">
+              <Zap className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
               <div>
                 <h4 className="text-sm font-semibold text-white">Practical AI Impact</h4>
-                <p className="text-xs text-slate-400">Zero fluff. Concrete automations that save actual business hours.</p>
+                <p className="text-xs text-slate-400">Smart chatbots and workflow automations that capture leads and answer 24/7.</p>
               </div>
             </div>
 
-            <div className="flex items-start gap-3 p-3 rounded-lg bg-atx-navy-card/40 border border-atx-navy-border/40">
-              <CheckCircle2 className="w-5 h-5 text-atx-gold flex-shrink-0 mt-0.5" />
+            <div className="flex items-start gap-3 p-3.5 rounded-xl bg-atx-navy-card/60 border border-atx-navy-border/60">
+              <ShieldCheck className="w-5 h-5 text-atx-gold flex-shrink-0 mt-0.5" />
               <div>
-                <h4 className="text-sm font-semibold text-white">Custom Engineering</h4>
-                <p className="text-xs text-slate-400">Tailored web platforms and software built for speed & conversion.</p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-3 p-3 rounded-lg bg-atx-navy-card/40 border border-atx-navy-border/40">
-              <CheckCircle2 className="w-5 h-5 text-atx-gold flex-shrink-0 mt-0.5" />
-              <div>
-                <h4 className="text-sm font-semibold text-white">Trusted Guidance</h4>
-                <p className="text-xs text-slate-400">Strategic consulting to invest only in technologies that move the needle.</p>
+                <h4 className="text-sm font-semibold text-white">Transparent Delivery</h4>
+                <p className="text-xs text-slate-400">Honest project timelines, clear milestone deliverables, and responsive support.</p>
               </div>
             </div>
           </div>
