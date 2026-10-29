@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { Menu, X, ArrowUpRight, MessageSquare } from 'lucide-react';
 import { COMPANY_INFO } from '../data/content';
 
-export default function Navbar({ onOpenDemoModal }) {
+export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
+    { label: 'Live Demos', href: '#live-demos' },
     { label: 'Services', href: '#services' },
-    { label: 'Live Demos', href: '#live-demos', isDemo: true },
     { label: 'Portfolio', href: '#case-studies' },
     { label: 'AI Tools', href: '#digital-products' },
     { label: 'Academy', href: '#training' },
@@ -16,11 +16,15 @@ export default function Navbar({ onOpenDemoModal }) {
     { label: 'Get Quote', href: '#contact' }
   ];
 
-  const handleLinkClick = (e, link) => {
-    if (link.isDemo && onOpenDemoModal) {
+  const handleLinkClick = (e, href) => {
+    if (href.startsWith('#')) {
       e.preventDefault();
-      onOpenDemoModal();
-      document.getElementById('live-demos')?.scrollIntoView({ behavior: 'smooth' });
+      const targetId = href.replace('#', '');
+      const el = document.getElementById(targetId);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+        window.location.hash = targetId;
+      }
     }
   };
 
@@ -53,8 +57,12 @@ export default function Navbar({ onOpenDemoModal }) {
               <a
                 key={link.label}
                 href={link.href}
-                onClick={(e) => handleLinkClick(e, link)}
-                className="text-xs font-semibold text-slate-300 hover:text-atx-gold transition-colors uppercase tracking-wider"
+                onClick={(e) => handleLinkClick(e, link.href)}
+                className={`text-xs font-semibold uppercase tracking-wider transition-colors ${
+                  link.href === '#live-demos'
+                    ? 'text-atx-gold hover:text-white font-bold'
+                    : 'text-slate-300 hover:text-atx-gold'
+                }`}
               >
                 {link.label}
               </a>
@@ -63,19 +71,17 @@ export default function Navbar({ onOpenDemoModal }) {
 
           {/* Medium Screens (lg) */}
           <nav className="hidden md:flex xl:hidden items-center gap-3">
-            <a href="#services" className="text-xs font-semibold text-slate-300 hover:text-atx-gold transition-colors uppercase">Services</a>
-            <button
-              onClick={() => {
-                onOpenDemoModal?.();
-                document.getElementById('live-demos')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="text-xs font-semibold text-atx-gold transition-colors uppercase hover:underline"
+            <a 
+              href="#live-demos" 
+              onClick={(e) => handleLinkClick(e, '#live-demos')}
+              className="text-xs font-bold text-atx-gold uppercase"
             >
               Live Demos
-            </button>
-            <a href="#case-studies" className="text-xs font-semibold text-slate-300 hover:text-atx-gold transition-colors uppercase">Portfolio</a>
-            <a href="#digital-products" className="text-xs font-semibold text-slate-300 hover:text-atx-gold transition-colors uppercase">AI Tools</a>
-            <a href="#contact" className="text-xs font-semibold text-slate-300 hover:text-atx-gold transition-colors uppercase">Get Quote</a>
+            </a>
+            <a href="#services" onClick={(e) => handleLinkClick(e, '#services')} className="text-xs font-semibold text-slate-300 hover:text-atx-gold transition-colors uppercase">Services</a>
+            <a href="#case-studies" onClick={(e) => handleLinkClick(e, '#case-studies')} className="text-xs font-semibold text-slate-300 hover:text-atx-gold transition-colors uppercase">Portfolio</a>
+            <a href="#digital-products" onClick={(e) => handleLinkClick(e, '#digital-products')} className="text-xs font-semibold text-slate-300 hover:text-atx-gold transition-colors uppercase">AI Tools</a>
+            <a href="#contact" onClick={(e) => handleLinkClick(e, '#contact')} className="text-xs font-semibold text-slate-300 hover:text-atx-gold transition-colors uppercase">Get Quote</a>
           </nav>
 
           {/* Desktop CTA Buttons */}
@@ -91,6 +97,7 @@ export default function Navbar({ onOpenDemoModal }) {
             </a>
             <a
               href="#contact"
+              onClick={(e) => handleLinkClick(e, '#contact')}
               className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider text-atx-navy-dark bg-gradient-to-r from-atx-gold to-atx-gold-light hover:brightness-110 shadow-md transition-all font-bold"
             >
               <span>Request Quote</span>
@@ -129,9 +136,11 @@ export default function Navbar({ onOpenDemoModal }) {
               href={link.href}
               onClick={(e) => {
                 setMobileMenuOpen(false);
-                handleLinkClick(e, link);
+                handleLinkClick(e, link.href);
               }}
-              className="block py-2 text-base font-medium text-slate-200 hover:text-atx-gold"
+              className={`block py-2 text-base font-medium ${
+                link.href === '#live-demos' ? 'text-atx-gold font-bold' : 'text-slate-200 hover:text-atx-gold'
+              }`}
             >
               {link.label}
             </a>
@@ -148,7 +157,10 @@ export default function Navbar({ onOpenDemoModal }) {
             </a>
             <a
               href="#contact"
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={(e) => {
+                setMobileMenuOpen(false);
+                handleLinkClick(e, '#contact');
+              }}
               className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider text-atx-navy-dark bg-atx-gold"
             >
               <span>Request Quote</span>

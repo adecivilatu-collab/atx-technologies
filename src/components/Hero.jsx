@@ -2,20 +2,18 @@ import React from 'react';
 import { ArrowRight, MessageSquare, Sparkles, CheckCircle2, Globe, Zap, ShieldCheck } from 'lucide-react';
 import { COMPANY_INFO } from '../data/content';
 
-export default function Hero({ onOpenDemoModal }) {
-  const handleDemoClick = (e) => {
+export default function Hero() {
+  const scrollToDemo = (e) => {
     e.preventDefault();
-    if (onOpenDemoModal) {
-      onOpenDemoModal();
-    }
     const el = document.getElementById('live-demos');
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
+      window.location.hash = 'live-demos';
     }
   };
 
   return (
-    <section className="relative overflow-hidden pt-12 pb-24 md:pt-20 md:pb-32 bg-radial-gradient">
+    <section className="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-28 bg-radial-gradient">
       {/* Decorative background glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-atx-gold/10 blur-[130px] rounded-full pointer-events-none"></div>
       <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-600/10 blur-[120px] rounded-full pointer-events-none"></div>
@@ -53,19 +51,19 @@ export default function Hero({ onOpenDemoModal }) {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
-            <button
-              type="button"
-              onClick={handleDemoClick}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-bold text-sm uppercase tracking-wider text-atx-navy-dark bg-gradient-to-r from-atx-gold to-atx-gold-light hover:brightness-110 shadow-lg shadow-atx-gold/20 transition-all cursor-pointer"
+            <a
+              href="#live-demos"
+              onClick={scrollToDemo}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl font-bold text-sm uppercase tracking-wider text-atx-navy-dark bg-gradient-to-r from-atx-gold to-atx-gold-light hover:brightness-110 shadow-xl shadow-atx-gold/30 hover:scale-105 transition-all cursor-pointer ring-2 ring-atx-gold/50"
             >
               <span>View Live Demonstration</span>
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </a>
             <a
               href={COMPANY_INFO.whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm uppercase tracking-wider text-white bg-atx-navy-card hover:bg-atx-navy-light border border-atx-gold/30 hover:border-atx-gold transition-all"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl font-semibold text-sm uppercase tracking-wider text-white bg-atx-navy-card hover:bg-atx-navy-light border border-atx-gold/30 hover:border-atx-gold transition-all"
             >
               <MessageSquare className="w-4 h-4 text-emerald-400" />
               <span>Request a Quote (WhatsApp)</span>
