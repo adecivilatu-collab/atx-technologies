@@ -43,10 +43,10 @@ export default function Hero() {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
             <a
-              href="#case-studies"
+              href="#live-demos"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-bold text-sm uppercase tracking-wider text-atx-navy-dark bg-gradient-to-r from-atx-gold to-atx-gold-light hover:brightness-110 shadow-lg shadow-atx-gold/20 transition-all"
             >
-              <span>View Our Work & Demos</span>
+              <span>View Live Demonstration</span>
               <ArrowRight className="w-4 h-4" />
             </a>
             <a

@@ -7,11 +7,10 @@ export default function Navbar() {
 
   const navLinks = [
     { label: 'Services', href: '#services' },
-    { label: 'Portfolio & Demos', href: '#case-studies' },
+    { label: 'Live Demos', href: '#live-demos' },
+    { label: 'Portfolio', href: '#case-studies' },
     { label: 'AI Tools', href: '#digital-products' },
     { label: 'Academy', href: '#training' },
-    { label: 'Platform', href: '#platform' },
-    { label: 'Articles', href: '#articles' },
     { label: 'About', href: '#about' },
     { label: 'FAQ', href: '#faq' },
     { label: 'Get Quote', href: '#contact' }
@@ -56,10 +55,10 @@ export default function Navbar() {
           {/* Medium Screens (lg) */}
           <nav className="hidden md:flex xl:hidden items-center gap-3">
             <a href="#services" className="text-xs font-semibold text-slate-300 hover:text-atx-gold transition-colors uppercase">Services</a>
+            <a href="#live-demos" className="text-xs font-semibold text-atx-gold transition-colors uppercase">Live Demos</a>
             <a href="#case-studies" className="text-xs font-semibold text-slate-300 hover:text-atx-gold transition-colors uppercase">Portfolio</a>
             <a href="#digital-products" className="text-xs font-semibold text-slate-300 hover:text-atx-gold transition-colors uppercase">AI Tools</a>
-            <a href="#training" className="text-xs font-semibold text-slate-300 hover:text-atx-gold transition-colors uppercase">Academy</a>
-            <a href="#contact" className="text-xs font-semibold text-atx-gold transition-colors uppercase">Get Quote</a>
+            <a href="#contact" className="text-xs font-semibold text-slate-300 hover:text-atx-gold transition-colors uppercase">Get Quote</a>
           </nav>
 
           {/* Desktop CTA Buttons */}

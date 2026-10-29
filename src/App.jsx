@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
+import LiveDemoStudio from './components/LiveDemoStudio';
 import DigitalProducts from './components/DigitalProducts';
 import TrainingAcademy from './components/TrainingAcademy';
 import PlatformPortal from './components/PlatformPortal';
@@ -22,6 +23,7 @@ export default function App() {
       <main className="flex-1">
         <Hero />
         <Services />
+        <LiveDemoStudio />
         <DigitalProducts />
         <TrainingAcademy />
         <PlatformPortal />
