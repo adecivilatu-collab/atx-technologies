@@ -7,232 +7,146 @@ import {
   ArrowRight, 
   Globe, 
   Zap, 
-  Calculator,
   MessageSquare,
   ShieldCheck,
-  RotateCcw,
   Send,
-  Star
+  Star,
+  Calendar,
+  Check,
+  Truck,
+  Layers,
+  Award,
+  ArrowUpRight
 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/content';
 
-const PROTOTYPES = [
-  {
-    id: 'corporate-business',
-    category: 'Corporate & SME',
-    title: 'Corporate Business Website',
-    badge: 'Enterprise Credibility & Authority',
-    tagline: 'Multi-page corporate presence engineered to establish trust and win high-value contracts.',
-    url: 'https://vanguard-logistics.com.ng',
-    speed: '0.6s',
-    lighthouse: '99',
-    pages: {
-      home: {
-        headline: 'Reliable Freight & Haulage Infrastructure Across West Africa',
-        subhead: 'End-to-end container clearing, cold-chain logistics, and nationwide distribution with real-time GPS fleet tracking.',
-        cta: 'Request Freight Quote',
-        highlights: [
-          { title: 'Sub-48hr Port Clearance', desc: 'Dedicated customs clearing at Apapa & Tin Can ports' },
-          { title: '100% Insured Fleet', desc: 'Comprehensive transit protection on all cargo' },
-          { title: 'Real-Time Telematics', desc: '24/7 continuous satellite tracking for clients' }
-        ],
-        trust: 'Over 140+ manufacturing, FMCG, and corporate partners served.'
-      },
-      services: {
-        headline: 'Comprehensive Logistics Solutions',
-        subhead: 'Engineered for industrial scale and verified punctuality.',
-        items: [
-          { name: 'Nationwide Haulage', detail: '30-tonne flatbeds and heavy cargo transports' },
-          { name: 'Cold-Chain Warehousing', detail: 'Temperature-controlled pharmaceutical & food storage' },
-          { name: 'Customs & Port Clearing', detail: 'Complete documentation and expedited gate exit' }
-        ]
-      },
-      quote: {
-        headline: 'Instant Freight & Project Estimator',
-        subhead: 'Simulate our instant quote workflow for enterprise clients.',
-        baseRate: '₦450,000',
-        timeline: '24–48 Hours',
-        includes: ['Gate Clearance', 'Transit Insurance', 'Dedicated Driver']
-      }
-    }
-  },
-  {
-    id: 'sales-landing-page',
-    category: 'High-Converting Sales',
-    title: 'High-Converting Landing Page',
-    badge: 'Campaign & Ad-Traffic Machine',
-    tagline: 'Laser-focused single-page architecture built to convert paid traffic into booked calls and sales.',
-    url: 'https://propelsaas.io/launch',
-    speed: '0.5s',
-    lighthouse: '100',
-    pages: {
-      home: {
-        headline: 'Cut Manual Operations in Half and Double Team Output',
-        subhead: 'The unified business operations dashboard for African startups, agencies, and tech-forward businesses.',
-        cta: 'Start Free 14-Day Pilot',
-        highlights: [
-          { title: '1-Click Paystack Sync', desc: 'Instant automated revenue reconciliation' },
-          { title: 'Zero Invoicing Errors', desc: 'Automate client billing disputes away' },
-          { title: 'WhatsApp Alerts', desc: 'Real-time sales alerts delivered to your team' }
-        ],
-        trust: '2,400+ beta registrations in the last 30 days.'
-      },
-      services: {
-        headline: 'Why This Landing Page Converts at 11.4%',
-        subhead: 'Notice how every element leads directly to a single conversion action.',
-        items: [
-          { name: 'Sticky Action Bar', detail: 'Call to action remains visible at all times' },
-          { name: 'Social Proof Badges', detail: 'Real client reviews place trust above the fold' },
-          { name: 'Sub-Second Loading', detail: 'Zero bounce rate from slow mobile connections' }
-        ]
-      },
-      quote: {
-        headline: 'Interactive SaaS Pricing Calculator',
-        subhead: 'Test this live pricing tier calculator.',
-        baseRate: '₦35,000 / month',
-        timeline: 'Instant Provisioning',
-        includes: ['Unlimited Team Members', 'Automated Backups', 'WhatsApp Webhooks']
-      }
-    }
-  },
-  {
-    id: 'executive-portfolio',
-    category: 'Personal Brand',
-    title: 'Executive Portfolio Website',
-    badge: 'Founders & Thought Leaders',
-    tagline: 'Minimalist, prestigious showcase for consultants, executives, and creative directors.',
-    url: 'https://alexander-adeyemi.com',
-    speed: '0.4s',
-    lighthouse: '100',
-    pages: {
-      home: {
-        headline: 'Advising Africa\'s Leading Ventures from Seed to Series B',
-        subhead: '12+ years building regulated fintech channels, board-level governance, and institutional fundraising.',
-        cta: 'Book Advisory Session',
-        highlights: [
-          { title: '$24M+ Capital Advised', desc: 'Across 14 high-growth African startups' },
-          { title: 'Keynote Speaker', desc: 'Africa Tech Summit, Techpoint, and Afrexim' },
-          { title: 'Board Advisor', desc: 'Active strategic director for 4 fintech entities' }
-        ],
-        trust: 'Featured in TechCabal, BusinessDay, and Quartz Africa.'
-      },
-      services: {
-        headline: 'Advisory & Speaking Engagements',
-        subhead: 'Strategic retainers and keynote appearances.',
-        items: [
-          { name: 'Executive Strategy Retainer', detail: 'Monthly strategic direction and board advisory' },
-          { name: 'Venture Fundraising Prep', detail: 'Financial modeling, pitch deck audit & investor intro' },
-          { name: 'Keynote Tech Addresses', detail: 'Insights on African fintech regulations and growth' }
-        ]
-      },
-      quote: {
-        headline: 'Advisory Booking Simulator',
-        subhead: 'Direct scheduling integration with automated calendar sync.',
-        baseRate: '$1,500 / session',
-        timeline: '90-Minute Deep Dive',
-        includes: ['Pre-session Audit', 'Full Recording', 'Actionable Roadmap PDF']
-      }
-    }
-  },
-  {
-    id: 'ai-chatbot-demo',
-    category: 'AI & Automation',
-    title: '24/7 AI Lead Qualification Bot',
-    badge: 'Automated Sales & Support',
-    tagline: 'Live interactive conversational assistant that answers FAQs and hands over to WhatsApp.',
-    url: 'https://atx-assistant.live',
-    speed: '0.3s',
-    lighthouse: '99',
-    isBot: true
-  }
-];
-
 export default function LiveDemoStudio() {
-  const [activeProtoId, setActiveProtoId] = useState('corporate-business');
-  const [activePage, setActivePage] = useState('home'); // 'home' | 'services' | 'quote'
-  const [deviceMode, setDeviceMode] = useState('desktop'); // 'desktop' | 'mobile'
-  
-  // Interactive mini-calculator state inside the demo
-  const [calcSelectedTier, setCalcSelectedTier] = useState('standard');
-  const [calcFeedback, setCalcFeedback] = useState('');
+  const [activeProto, setActiveProto] = useState('corporate'); // 'corporate' | 'landing' | 'portfolio' | 'chatbot'
+  const [deviceView, setDeviceView] = useState('desktop'); // 'desktop' | 'mobile'
 
-  // Bot simulation state
-  const [botChatStep, setBotChatStep] = useState(0);
+  // Corporate Demo State
+  const [freightWeight, setFreightWeight] = useState('10');
+  const [freightDest, setFreightDest] = useState('Ikeja, Lagos');
+  const [freightCalculated, setFreightCalculated] = useState(false);
 
-  const activeProto = PROTOTYPES.find((p) => p.id === activeProtoId) || PROTOTYPES[0];
+  // Landing Page Demo State
+  const [leadEmail, setLeadEmail] = useState('');
+  const [leadSubmitted, setLeadSubmitted] = useState(false);
 
-  const botMessages = [
-    { sender: 'bot', text: 'Hello! Welcome to Vanguard Logistics. Are you inquiring about nationwide haulage or seaport freight clearance?' },
-    { sender: 'user', text: 'I need seaport clearance for two 40ft containers arriving at Apapa Port next Tuesday.' },
-    { sender: 'bot', text: 'Understood! Our Apapa clearance team offers sub-48hr turnaround with 100% transit insurance. Would you like an itemized invoice sent directly to your WhatsApp?' },
-    { sender: 'user', text: 'Yes please, send to 0815 088 2291.' },
-    { sender: 'bot', text: 'Perfect! A senior freight manager has been assigned and is reaching out to your WhatsApp right now with your quote.' }
+  // Portfolio Demo State
+  const [selectedDate, setSelectedDate] = useState('Tomorrow, 2:00 PM');
+  const [bookingConfirmed, setBookingConfirmed] = useState(false);
+
+  // AI Chatbot State
+  const [chatInput, setChatInput] = useState('');
+  const [chatMessages, setChatMessages] = useState([
+    { sender: 'bot', text: 'Hello! I am your 24/7 Virtual Assistant. How can I assist your business today?' },
+    { sender: 'bot', text: 'You can tap any question below or type your message:', isChips: true }
+  ]);
+
+  const quickQuestions = [
+    "How much does a corporate website cost?",
+    "Can you build an automated WhatsApp bot?",
+    "How fast can you redesign my slow website?"
   ];
 
-  const handleSimulatedAction = (actionTitle) => {
-    setCalcFeedback(`✓ Interactive Action Triggered: "${actionTitle}". In a live build, this seamlessly opens your WhatsApp or payments checkout!`);
-    setTimeout(() => setCalcFeedback(''), 4500);
+  const handleSendChat = (text) => {
+    const userQuery = text || chatInput;
+    if (!userQuery.trim()) return;
+
+    const newMsgs = [...chatMessages, { sender: 'user', text: userQuery }];
+    setChatMessages(newMsgs);
+    setChatInput('');
+
+    setTimeout(() => {
+      let botReply = "Thank you for asking! ATX Technologies builds high-converting business websites in 1–2 weeks and custom AI bots that connect directly to your WhatsApp. Would you like to chat with an engineer on WhatsApp right now?";
+      if (userQuery.toLowerCase().includes('cost') || userQuery.toLowerCase().includes('price')) {
+        botReply = "Our bespoke corporate websites and landing pages start with clear transparent milestones. We can prepare a customized quote for your exact scope in under 24 hours.";
+      } else if (userQuery.toLowerCase().includes('fast') || userQuery.toLowerCase().includes('redesign')) {
+        botReply = "Full website redesigns take typically 10 to 14 days, with sub-second mobile page loads (< 0.8s) and 99+ Google Lighthouse scores guaranteed.";
+      }
+      setChatMessages((prev) => [...prev, { sender: 'bot', text: botReply }]);
+    }, 600);
   };
 
   return (
-    <section id="live-demos" className="py-20 md:py-28 bg-atx-navy relative border-t border-atx-navy-border/60 scroll-mt-20">
+    <section id="live-demos" className="py-20 md:py-28 bg-atx-navy relative border-t border-atx-navy-border/60 scroll-mt-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto mb-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-atx-gold/15 border border-atx-gold/30 text-atx-gold text-xs font-semibold uppercase tracking-wider mb-4 shadow-sm">
-            <Sparkles className="w-3.5 h-3.5 animate-pulse" />
-            <span>Interactive Live Demonstration Studio</span>
+            <Sparkles className="w-3.5 h-3.5 animate-pulse text-atx-gold" />
+            <span>Working Interactive Demonstration Studio</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">
-            Test Our Website Architectures Live
+            Experience Our Website Architectures Live
           </h2>
           <p className="text-base sm:text-lg text-slate-300">
-            Click through the prototypes below, switch between <strong>Desktop</strong> and <strong>Mobile</strong> view, test interactive buttons, and see how our builds convert visitors into paying clients.
+            This is an actual working simulator. Click the prototype tabs, toggle between <strong>Desktop</strong> and <strong>Mobile Phone</strong> view, and test real interactive forms, calculators, and automated chat.
           </p>
         </div>
 
-        {/* 1. Main Prototype Selector Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-8">
-          {PROTOTYPES.map((proto) => {
-            const isSelected = proto.id === activeProtoId;
-            return (
-              <button
-                key={proto.id}
-                type="button"
-                onClick={() => {
-                  setActiveProtoId(proto.id);
-                  setActivePage('home');
-                  setBotChatStep(0);
-                  setCalcFeedback('');
-                }}
-                className={`px-4 py-3 rounded-xl text-xs sm:text-sm font-bold transition-all border flex items-center gap-2 cursor-pointer ${
-                  isSelected
-                    ? 'bg-gradient-to-r from-atx-gold to-atx-gold-light text-atx-navy-dark border-atx-gold shadow-lg shadow-atx-gold/25 scale-105'
-                    : 'bg-atx-navy-card text-slate-300 border-atx-navy-border hover:border-atx-gold/40 hover:text-white'
-                }`}
-              >
-                <span>{proto.title}</span>
-                <span className={`text-[10px] px-2 py-0.5 rounded-md ${
-                  isSelected ? 'bg-atx-navy-dark text-atx-gold' : 'bg-atx-navy text-slate-400'
-                }`}>
-                  {proto.category}
-                </span>
-              </button>
-            );
-          })}
+        {/* 1. Prototype Tabs */}
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-6">
+          <button
+            type="button"
+            onClick={() => setActiveProto('corporate')}
+            className={`px-4 py-3 rounded-xl text-xs sm:text-sm font-bold transition-all border flex items-center gap-2 cursor-pointer ${
+              activeProto === 'corporate'
+                ? 'bg-atx-gold text-atx-navy-dark border-atx-gold shadow-lg shadow-atx-gold/20 scale-105'
+                : 'bg-atx-navy-card text-slate-300 border-atx-navy-border hover:border-atx-gold/40 hover:text-white'
+            }`}
+          >
+            <span>🏢 Corporate Business Website</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setActiveProto('landing')}
+            className={`px-4 py-3 rounded-xl text-xs sm:text-sm font-bold transition-all border flex items-center gap-2 cursor-pointer ${
+              activeProto === 'landing'
+                ? 'bg-atx-gold text-atx-navy-dark border-atx-gold shadow-lg shadow-atx-gold/20 scale-105'
+                : 'bg-atx-navy-card text-slate-300 border-atx-navy-border hover:border-atx-gold/40 hover:text-white'
+            }`}
+          >
+            <span>⚡ High-Converting Landing Page</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setActiveProto('portfolio')}
+            className={`px-4 py-3 rounded-xl text-xs sm:text-sm font-bold transition-all border flex items-center gap-2 cursor-pointer ${
+              activeProto === 'portfolio'
+                ? 'bg-atx-gold text-atx-navy-dark border-atx-gold shadow-lg shadow-atx-gold/20 scale-105'
+                : 'bg-atx-navy-card text-slate-300 border-atx-navy-border hover:border-atx-gold/40 hover:text-white'
+            }`}
+          >
+            <span>🎨 Executive Portfolio Website</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setActiveProto('chatbot')}
+            className={`px-4 py-3 rounded-xl text-xs sm:text-sm font-bold transition-all border flex items-center gap-2 cursor-pointer ${
+              activeProto === 'chatbot'
+                ? 'bg-atx-gold text-atx-navy-dark border-atx-gold shadow-lg shadow-atx-gold/20 scale-105'
+                : 'bg-atx-navy-card text-slate-300 border-atx-navy-border hover:border-atx-gold/40 hover:text-white'
+            }`}
+          >
+            <span>🤖 24/7 AI Chatbot Assistant</span>
+          </button>
         </div>
 
-        {/* 2. Controls & Performance Bar */}
-        <div className="bg-atx-navy-card border border-atx-navy-border rounded-2xl p-4 mb-6 flex flex-col md:flex-row items-center justify-between gap-4 shadow-md">
-          
-          {/* Device Switcher */}
+        {/* 2. Device Mode & Live Indicators Bar */}
+        <div className="bg-atx-navy-card border border-atx-navy-border rounded-2xl p-4 mb-6 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-md">
+          {/* Viewport switch */}
           <div className="flex items-center gap-2 bg-atx-navy p-1 rounded-xl border border-atx-navy-border">
             <button
               type="button"
-              onClick={() => setDeviceMode('desktop')}
+              onClick={() => setDeviceView('desktop')}
               className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                deviceMode === 'desktop'
+                deviceView === 'desktop'
                   ? 'bg-atx-gold text-atx-navy-dark shadow-sm'
                   : 'text-slate-400 hover:text-white'
               }`}
@@ -242,9 +156,9 @@ export default function LiveDemoStudio() {
             </button>
             <button
               type="button"
-              onClick={() => setDeviceMode('mobile')}
+              onClick={() => setDeviceView('mobile')}
               className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                deviceMode === 'mobile'
+                deviceView === 'mobile'
                   ? 'bg-atx-gold text-atx-navy-dark shadow-sm'
                   : 'text-slate-400 hover:text-white'
               }`}
@@ -254,40 +168,31 @@ export default function LiveDemoStudio() {
             </button>
           </div>
 
-          {/* Performance Gauges */}
-          <div className="flex flex-wrap items-center justify-center gap-4 text-xs">
-            <div className="flex items-center gap-1.5 text-slate-300">
+          {/* Performance Badges */}
+          <div className="flex flex-wrap items-center gap-4 text-xs text-slate-300">
+            <div className="flex items-center gap-1.5">
               <Zap className="w-4 h-4 text-emerald-400" />
-              <span>Speed: <strong className="text-white">{activeProto.speed}</strong></span>
+              <span>Speed: <strong className="text-white">&lt; 0.7s</strong></span>
             </div>
-            <div className="flex items-center gap-1.5 text-slate-300">
+            <div className="flex items-center gap-1.5">
               <CheckCircle2 className="w-4 h-4 text-atx-gold" />
-              <span>Lighthouse Score: <strong className="text-atx-gold">{activeProto.lighthouse}/100</strong></span>
+              <span>Lighthouse: <strong className="text-atx-gold">99-100/100</strong></span>
             </div>
-            <div className="inline-flex items-center gap-1 text-slate-300">
+            <div className="flex items-center gap-1.5">
               <ShieldCheck className="w-4 h-4 text-blue-400" />
-              <span className="text-slate-300">{activeProto.badge}</span>
+              <span>Fully Responsive & Interactive</span>
             </div>
           </div>
-
         </div>
 
-        {/* Interactive Action Toast */}
-        {calcFeedback && (
-          <div className="mb-4 p-3.5 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs sm:text-sm text-center font-semibold animate-in fade-in">
-            {calcFeedback}
-          </div>
-        )}
-
-        {/* 3. Interactive Device Frame */}
+        {/* 3. Simulated Device Container */}
         <div className="flex justify-center transition-all duration-300">
           <div
             className={`w-full bg-slate-950 rounded-2xl border-2 border-atx-gold/50 shadow-2xl overflow-hidden transition-all duration-300 ${
-              deviceMode === 'mobile' ? 'max-w-[390px] border-4 border-slate-700' : 'max-w-5xl'
+              deviceView === 'mobile' ? 'max-w-[390px] border-4 border-slate-700' : 'max-w-5xl'
             }`}
           >
-            
-            {/* Top Chrome / Address Bar */}
+            {/* Browser Top Window Bar */}
             <div className="bg-slate-900 px-4 py-3 border-b border-slate-800 flex items-center justify-between text-xs text-slate-400">
               <div className="flex items-center gap-1.5">
                 <span className="w-3 h-3 rounded-full bg-rose-500/80 inline-block"></span>
@@ -296,80 +201,302 @@ export default function LiveDemoStudio() {
               </div>
               <div className="flex-1 max-w-sm mx-3 px-3 py-1 bg-slate-950 rounded-lg text-center text-[11px] text-slate-300 font-mono flex items-center justify-center gap-1.5 border border-slate-800">
                 <span className="text-emerald-400 text-xs">🔒</span>
-                <span className="truncate">{activeProto.url}</span>
+                <span className="truncate">
+                  {activeProto === 'corporate' && 'https://vanguard-freight.com.ng'}
+                  {activeProto === 'landing' && 'https://propelsaas.io/launch'}
+                  {activeProto === 'portfolio' && 'https://alexander-adeyemi.com'}
+                  {activeProto === 'chatbot' && 'https://atx-assistant.live/demo'}
+                </span>
               </div>
-              <span className="text-[10px] text-emerald-400 font-bold uppercase tracking-wider">
-                ● Interactive
+              <span className="text-[10px] text-emerald-400 font-bold uppercase tracking-wider flex items-center gap-1">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping inline-block"></span>
+                <span>Live</span>
               </span>
             </div>
 
-            {/* Inner Interactive Navigation for Website Prototypes */}
-            {!activeProto.isBot && (
-              <div className="bg-slate-900/90 border-b border-slate-800 px-4 py-2.5 flex items-center justify-between text-xs">
-                <div className="flex items-center gap-1.5">
-                  <button
-                    type="button"
-                    onClick={() => setActivePage('home')}
-                    className={`px-3 py-1 rounded-md text-[11px] font-bold transition-colors cursor-pointer ${
-                      activePage === 'home'
-                        ? 'bg-atx-gold text-atx-navy-dark'
-                        : 'text-slate-300 hover:text-white hover:bg-slate-800'
-                    }`}
-                  >
-                    1. Home
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setActivePage('services')}
-                    className={`px-3 py-1 rounded-md text-[11px] font-bold transition-colors cursor-pointer ${
-                      activePage === 'services'
-                        ? 'bg-atx-gold text-atx-navy-dark'
-                        : 'text-slate-300 hover:text-white hover:bg-slate-800'
-                    }`}
-                  >
-                    2. Services
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setActivePage('quote')}
-                    className={`px-3 py-1 rounded-md text-[11px] font-bold transition-colors cursor-pointer ${
-                      activePage === 'quote'
-                        ? 'bg-atx-gold text-atx-navy-dark'
-                        : 'text-slate-300 hover:text-white hover:bg-slate-800'
-                    }`}
-                  >
-                    3. Live Quote Simulator
-                  </button>
-                </div>
-                <span className="text-[10px] text-slate-400 hidden sm:inline">
-                  Click tabs above to switch pages
-                </span>
-              </div>
-            )}
-
-            {/* Canvas Area */}
-            <div className="p-6 sm:p-8 min-h-[460px] max-h-[580px] overflow-y-auto flex flex-col justify-between">
+            {/* Canvas: Truly Functional Simulated Websites */}
+            <div className="min-h-[480px] max-h-[620px] overflow-y-auto p-5 sm:p-8 bg-slate-950 text-slate-100 flex flex-col justify-between">
               
-              {activeProto.isBot ? (
-                /* AI Bot Conversational Simulator */
-                <div className="max-w-md mx-auto w-full py-4 space-y-4">
-                  <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 text-center">
-                    <h4 className="text-sm font-bold text-white mb-1">
-                      Live AI Lead Qualification Chatbot
-                    </h4>
-                    <p className="text-xs text-slate-400">
-                      Click the button below to simulate an incoming client inquiry in real time.
+              {/* ================= PROTO 1: CORPORATE BUSINESS ================= */}
+              {activeProto === 'corporate' && (
+                <div className="space-y-6">
+                  {/* Simulated Nav */}
+                  <div className="flex items-center justify-between pb-4 border-b border-slate-800">
+                    <div className="flex items-center gap-2">
+                      <div className="w-7 h-7 rounded-lg bg-atx-gold text-atx-navy-dark flex items-center justify-center font-black text-xs">
+                        VF
+                      </div>
+                      <span className="text-xs sm:text-sm font-extrabold tracking-wider text-white">
+                        VANGUARD FREIGHT
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <span className="text-[11px] text-slate-400 hidden sm:inline">Fleet • Tracking • Network</span>
+                      <button
+                        type="button"
+                        onClick={() => setFreightCalculated(true)}
+                        className="px-3 py-1.5 rounded-lg bg-atx-gold text-atx-navy-dark text-[11px] font-bold uppercase cursor-pointer hover:brightness-110"
+                      >
+                        Freight Rate
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Simulated Hero */}
+                  <div className="py-4 text-center max-w-xl mx-auto">
+                    <span className="inline-block px-3 py-1 rounded-full bg-atx-gold/15 text-atx-gold text-[10px] font-bold uppercase tracking-wider mb-3 border border-atx-gold/30">
+                      West Africa Cargo & Seaport Clearance
+                    </span>
+                    <h3 className="text-xl sm:text-3xl font-extrabold text-white mb-3 leading-snug">
+                      Reliable Haulage & Container Clearance in Under 48 Hours
+                    </h3>
+                    <p className="text-xs sm:text-sm text-slate-300 mb-6 leading-relaxed">
+                      Connecting industrial manufacturers, importers, and FMCG brands with 100% insured road haulage and GPS cargo tracking.
                     </p>
                   </div>
 
-                  <div className="space-y-3 pt-2">
-                    {botMessages.slice(0, botChatStep + 1).map((msg, idx) => (
+                  {/* Interactive Rate Calculator Widget */}
+                  <div className="p-5 rounded-2xl bg-slate-900 border border-slate-800 max-w-lg mx-auto space-y-4">
+                    <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+                      <div className="flex items-center gap-2">
+                        <Truck className="w-4 h-4 text-atx-gold" />
+                        <span className="text-xs font-bold text-white">Interactive Freight Estimator</span>
+                      </div>
+                      <span className="text-[10px] text-emerald-400 font-bold uppercase">Instant Result</span>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                      <div>
+                        <label className="block text-[11px] text-slate-400 mb-1">Cargo Weight (Tonnes)</label>
+                        <select
+                          value={freightWeight}
+                          onChange={(e) => setFreightWeight(e.target.value)}
+                          className="w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-white text-xs cursor-pointer"
+                        >
+                          <option value="5">5 Tonnes (Light Truck)</option>
+                          <option value="15">15 Tonnes (Semi-Trailer)</option>
+                          <option value="30">30 Tonnes (Flatbed Container)</option>
+                        </select>
+                      </div>
+
+                      <div>
+                        <label className="block text-[11px] text-slate-400 mb-1">Delivery Destination</label>
+                        <select
+                          value={freightDest}
+                          onChange={(e) => setFreightDest(e.target.value)}
+                          className="w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-white text-xs cursor-pointer"
+                        >
+                          <option value="Ikeja, Lagos">Ikeja / Mainland, Lagos</option>
+                          <option value="Ibadan, Oyo">Ibadan, Oyo State</option>
+                          <option value="Abuja, FCT">Abuja Industrial Zone</option>
+                          <option value="Port Harcourt">Port Harcourt, Rivers</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-between text-xs">
+                      <div>
+                        <div className="text-[10px] text-slate-400">Calculated Freight Rate:</div>
+                        <div className="text-base font-extrabold text-atx-gold">
+                          ₦{(parseInt(freightWeight) * 35000 + (freightDest.includes('Abuja') ? 250000 : 80000)).toLocaleString()}
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-[10px] text-slate-400">Transit ETA:</div>
+                        <div className="text-xs font-bold text-emerald-400">
+                          {freightDest.includes('Abuja') ? '48 - 72 Hours' : 'Under 24 Hours'}
+                        </div>
+                      </div>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => setFreightCalculated(true)}
+                      className="w-full py-2.5 rounded-xl bg-gradient-to-r from-atx-gold to-atx-gold-light text-atx-navy-dark text-xs font-bold uppercase tracking-wider hover:brightness-110 shadow-md cursor-pointer"
+                    >
+                      {freightCalculated ? '✓ Rate Locked & Transmitted!' : 'Request Dispatch for This Rate →'}
+                    </button>
+                    {freightCalculated && (
+                      <p className="text-[11px] text-emerald-400 text-center font-semibold">
+                        ✨ Simulated Lead Captured! In your production site, this routes directly into your WhatsApp & CRM.
+                      </p>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* ================= PROTO 2: SALES LANDING PAGE ================= */}
+              {activeProto === 'landing' && (
+                <div className="space-y-6">
+                  {/* Simulated Nav */}
+                  <div className="flex items-center justify-between pb-4 border-b border-slate-800">
+                    <span className="text-xs sm:text-sm font-extrabold tracking-wider text-white">
+                      PROPEL SAAS
+                    </span>
+                    <span className="text-[10px] text-emerald-400 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 font-bold">
+                      ⚡ 14-Day Free Pilot
+                    </span>
+                  </div>
+
+                  {/* Hero Conversion Section */}
+                  <div className="py-4 text-center max-w-xl mx-auto">
+                    <span className="inline-block px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-bold uppercase tracking-wider mb-3 border border-emerald-500/20">
+                      Rated 4.9/5 by 240+ African Founders
+                    </span>
+                    <h3 className="text-xl sm:text-3xl font-extrabold text-white mb-3 leading-snug">
+                      Stop Losing Hours Every Week on Manual Revenue Reconciliation
+                    </h3>
+                    <p className="text-xs sm:text-sm text-slate-300 mb-6 leading-relaxed">
+                      Connect Paystack, Flutterwave, and bank feeds in under 5 minutes. Generate audit-ready financial statements automatically.
+                    </p>
+
+                    {/* Interactive Lead Capture Box */}
+                    <div className="max-w-md mx-auto p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-3">
+                      <div className="text-xs font-bold text-slate-200 text-left">
+                        Start your 14-day free pilot (No credit card required):
+                      </div>
+                      <div className="flex flex-col sm:flex-row gap-2">
+                        <input
+                          type="email"
+                          value={leadEmail}
+                          onChange={(e) => setLeadEmail(e.target.value)}
+                          placeholder="Enter your work email..."
+                          className="flex-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white text-xs focus:border-atx-gold focus:outline-none"
+                        />
+                        <button
+                          type="button"
+                          onClick={() => setLeadSubmitted(true)}
+                          className="px-5 py-2.5 rounded-xl bg-atx-gold text-atx-navy-dark text-xs font-bold uppercase tracking-wider hover:brightness-110 shadow-md cursor-pointer whitespace-nowrap"
+                        >
+                          Claim Pilot
+                        </button>
+                      </div>
+
+                      {leadSubmitted && (
+                        <div className="p-2.5 rounded-lg bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs font-semibold">
+                          🎉 Success! Pilot access provisioned for {leadEmail || 'your email'}.
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Trust Proof */}
+                    <div className="pt-6 flex items-center justify-center gap-6 text-[11px] text-slate-400">
+                      <div className="flex items-center gap-1">
+                        <Check className="w-3.5 h-3.5 text-emerald-400" />
+                        <span>Instant Setup</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Check className="w-3.5 h-3.5 text-emerald-400" />
+                        <span>SOC-2 Certified</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Check className="w-3.5 h-3.5 text-emerald-400" />
+                        <span>WhatsApp Sync</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* ================= PROTO 3: EXECUTIVE PORTFOLIO ================= */}
+              {activeProto === 'portfolio' && (
+                <div className="space-y-6">
+                  {/* Simulated Nav */}
+                  <div className="flex items-center justify-between pb-4 border-b border-slate-800">
+                    <span className="text-xs sm:text-sm font-extrabold tracking-wider text-white">
+                      ALEXANDER ADEYEMI
+                    </span>
+                    <span className="text-[10px] text-atx-gold font-bold uppercase tracking-wider">
+                      Advisory & Ventures
+                    </span>
+                  </div>
+
+                  {/* Profile & Metrics */}
+                  <div className="py-2 text-center max-w-xl mx-auto">
+                    <div className="w-16 h-16 rounded-full bg-atx-gold/20 border-2 border-atx-gold mx-auto mb-3 flex items-center justify-center font-extrabold text-atx-gold text-lg">
+                      AA
+                    </div>
+                    <h3 className="text-xl sm:text-2xl font-extrabold text-white mb-2">
+                      Fintech Strategist, Board Director & Angel Investor
+                    </h3>
+                    <p className="text-xs text-slate-300 mb-6 leading-relaxed max-w-md mx-auto">
+                      12+ years advising regulated cross-border payment platforms and mentoring executive founders from Seed to Series B.
+                    </p>
+
+                    {/* Stats Grid */}
+                    <div className="grid grid-cols-3 gap-3 mb-6">
+                      <div className="p-3 rounded-xl bg-slate-900 border border-slate-800">
+                        <div className="text-base font-black text-atx-gold">$24M+</div>
+                        <div className="text-[10px] text-slate-400">Venture Capital Raised</div>
+                      </div>
+                      <div className="p-3 rounded-xl bg-slate-900 border border-slate-800">
+                        <div className="text-base font-black text-atx-gold">14</div>
+                        <div className="text-[10px] text-slate-400">Board Positions</div>
+                      </div>
+                      <div className="p-3 rounded-xl bg-slate-900 border border-slate-800">
+                        <div className="text-base font-black text-atx-gold">30+</div>
+                        <div className="text-[10px] text-slate-400">Keynote Speeches</div>
+                      </div>
+                    </div>
+
+                    {/* Interactive Session Booking Simulator */}
+                    <div className="p-4 rounded-2xl bg-slate-900 border border-slate-800 max-w-md mx-auto text-left space-y-3">
+                      <div className="flex items-center justify-between text-xs">
+                        <span className="font-bold text-white flex items-center gap-1.5">
+                          <Calendar className="w-4 h-4 text-atx-gold" />
+                          <span>Book an Advisory Consultation</span>
+                        </span>
+                        <span className="text-[10px] text-atx-gold font-semibold">$1,500 / 90 Mins</span>
+                      </div>
+
+                      <div>
+                        <label className="block text-[10px] text-slate-400 mb-1">Select Available Time Slot:</label>
+                        <select
+                          value={selectedDate}
+                          onChange={(e) => setSelectedDate(e.target.value)}
+                          className="w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-white text-xs cursor-pointer"
+                        >
+                          <option value="Tomorrow, 2:00 PM">Tomorrow, 2:00 PM (West Africa Time)</option>
+                          <option value="Thursday, 10:00 AM">Thursday, 10:00 AM (West Africa Time)</option>
+                          <option value="Friday, 4:30 PM">Friday, 4:30 PM (West Africa Time)</option>
+                        </select>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() => setBookingConfirmed(true)}
+                        className="w-full py-2.5 rounded-xl bg-gradient-to-r from-atx-gold to-atx-gold-light text-atx-navy-dark text-xs font-bold uppercase tracking-wider hover:brightness-110 shadow-md cursor-pointer"
+                      >
+                        {bookingConfirmed ? '✓ Advisory Session Booked!' : 'Confirm Advisory Reservation →'}
+                      </button>
+
+                      {bookingConfirmed && (
+                        <p className="text-[11px] text-emerald-400 text-center font-semibold">
+                          📅 Calendar invite generated for {selectedDate}.
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* ================= PROTO 4: 24/7 AI CHATBOT ================= */}
+              {activeProto === 'chatbot' && (
+                <div className="max-w-md mx-auto w-full py-2 space-y-3">
+                  <div className="p-3 rounded-xl bg-slate-900 border border-slate-800 text-center">
+                    <h4 className="text-sm font-bold text-white mb-0.5">24/7 Automated Lead Qualifier</h4>
+                    <p className="text-[11px] text-slate-400">Type a question or tap a prompt to test instant intelligent responses</p>
+                  </div>
+
+                  {/* Chat messages stream */}
+                  <div className="space-y-2.5 max-h-[300px] overflow-y-auto p-1">
+                    {chatMessages.map((msg, idx) => (
                       <div
                         key={idx}
                         className={`flex flex-col ${msg.sender === 'user' ? 'items-end' : 'items-start'}`}
                       >
                         <div
-                          className={`max-w-[85%] rounded-2xl p-3.5 text-xs leading-relaxed ${
+                          className={`max-w-[85%] rounded-2xl p-3 text-xs leading-relaxed ${
                             msg.sender === 'user'
                               ? 'bg-atx-gold text-atx-navy-dark font-semibold'
                               : 'bg-slate-900 border border-slate-800 text-slate-200'
@@ -377,142 +504,43 @@ export default function LiveDemoStudio() {
                         >
                           {msg.text}
                         </div>
-                      </div>
-                    ))}
-                  </div>
 
-                  {botChatStep < botMessages.length - 1 ? (
-                    <div className="pt-3 text-center">
-                      <button
-                        type="button"
-                        onClick={() => setBotChatStep((prev) => prev + 1)}
-                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-atx-navy-dark bg-emerald-400 hover:bg-emerald-300 transition-colors shadow-md cursor-pointer"
-                      >
-                        <span>Simulate Next Customer Message</span>
-                        <ArrowRight className="w-3.5 h-3.5" />
-                      </button>
-                    </div>
-                  ) : (
-                    <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-center space-y-2 mt-4">
-                      <p className="text-xs font-bold text-emerald-400">
-                        ✨ Lead Qualified & Routed to WhatsApp in Under 30 Seconds!
-                      </p>
-                      <button
-                        type="button"
-                        onClick={() => setBotChatStep(0)}
-                        className="text-xs font-semibold text-slate-400 hover:text-white underline cursor-pointer"
-                      >
-                        Reset Conversation Simulation
-                      </button>
-                    </div>
-                  )}
-                </div>
-              ) : activePage === 'home' ? (
-                /* Subpage 1: Home */
-                <div>
-                  <div className="py-8 text-center max-w-xl mx-auto">
-                    <span className="inline-block px-3 py-1 rounded-full bg-atx-gold/15 text-atx-gold text-[10px] font-bold uppercase tracking-wider mb-4 border border-atx-gold/30">
-                      {activeProto.badge}
-                    </span>
-                    <h3 className="text-xl sm:text-3xl font-extrabold text-white mb-3 leading-snug">
-                      {activeProto.pages.home.headline}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-slate-300 mb-6 leading-relaxed">
-                      {activeProto.pages.home.subhead}
-                    </p>
-                    <button
-                      type="button"
-                      onClick={() => handleSimulatedAction(activeProto.pages.home.cta)}
-                      className="px-6 py-3 rounded-xl bg-gradient-to-r from-atx-gold to-atx-gold-light text-atx-navy-dark text-xs font-bold uppercase tracking-wider hover:brightness-110 shadow-lg shadow-atx-gold/25 transition-all cursor-pointer"
-                    >
-                      {activeProto.pages.home.cta} &rarr;
-                    </button>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-6 border-t border-slate-800">
-                    {activeProto.pages.home.highlights.map((item, idx) => (
-                      <div key={idx} className="p-3.5 rounded-xl bg-slate-900 border border-slate-800">
-                        <div className="text-xs font-bold text-white mb-1">{item.title}</div>
-                        <div className="text-[11px] text-slate-400">{item.desc}</div>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="pt-6 text-center text-xs text-slate-400">
-                    {activeProto.pages.home.trust}
-                  </div>
-                </div>
-              ) : activePage === 'services' ? (
-                /* Subpage 2: Services */
-                <div>
-                  <div className="py-6 text-center max-w-lg mx-auto">
-                    <h3 className="text-xl sm:text-2xl font-extrabold text-white mb-2">
-                      {activeProto.pages.services.headline}
-                    </h3>
-                    <p className="text-xs text-slate-400 mb-6">
-                      {activeProto.pages.services.subhead}
-                    </p>
-                  </div>
-
-                  <div className="space-y-3 max-w-lg mx-auto">
-                    {activeProto.pages.services.items.map((svc, idx) => (
-                      <div key={idx} className="p-4 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between">
-                        <div>
-                          <div className="text-xs font-bold text-white">{svc.name}</div>
-                          <div className="text-[11px] text-slate-400">{svc.detail}</div>
-                        </div>
-                        <button
-                          type="button"
-                          onClick={() => handleSimulatedAction(`Select Service: ${svc.name}`)}
-                          className="px-3 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider bg-atx-gold/20 text-atx-gold border border-atx-gold/40 hover:bg-atx-gold hover:text-atx-navy-dark transition-colors cursor-pointer"
-                        >
-                          Select
-                        </button>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ) : (
-                /* Subpage 3: Interactive Quote Simulator */
-                <div className="max-w-lg mx-auto py-4">
-                  <div className="text-center mb-6">
-                    <h3 className="text-xl font-extrabold text-white mb-1">
-                      {activeProto.pages.quote.headline}
-                    </h3>
-                    <p className="text-xs text-slate-400">
-                      {activeProto.pages.quote.subhead}
-                    </p>
-                  </div>
-
-                  <div className="p-5 rounded-2xl bg-slate-900 border border-slate-800 space-y-4">
-                    <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-                      <span className="text-xs text-slate-300">Estimated Project Fee:</span>
-                      <span className="text-lg font-black text-atx-gold">{activeProto.pages.quote.baseRate}</span>
-                    </div>
-
-                    <div className="flex items-center justify-between border-b border-slate-800 pb-3 text-xs">
-                      <span className="text-slate-300">Target Delivery Timeline:</span>
-                      <span className="font-bold text-emerald-400">{activeProto.pages.quote.timeline}</span>
-                    </div>
-
-                    <div>
-                      <span className="text-xs font-semibold text-slate-300 block mb-2">Package Deliverables:</span>
-                      <div className="space-y-1.5">
-                        {activeProto.pages.quote.includes.map((inc, idx) => (
-                          <div key={idx} className="flex items-center gap-2 text-xs text-slate-400">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-atx-gold" />
-                            <span>{inc}</span>
+                        {msg.isChips && (
+                          <div className="mt-2 flex flex-wrap gap-1.5">
+                            {quickQuestions.map((q, qIdx) => (
+                              <button
+                                key={qIdx}
+                                type="button"
+                                onClick={() => handleSendChat(q)}
+                                className="text-left text-[11px] px-2.5 py-1.5 rounded-lg bg-slate-900 hover:bg-atx-gold/20 text-slate-300 hover:text-atx-gold border border-slate-800 hover:border-atx-gold/40 cursor-pointer transition-colors"
+                              >
+                                {q}
+                              </button>
+                            ))}
                           </div>
-                        ))}
+                        )}
                       </div>
-                    </div>
+                    ))}
+                  </div>
 
+                  {/* Chat Input Box */}
+                  <div className="pt-2 flex gap-2">
+                    <input
+                      type="text"
+                      value={chatInput}
+                      onChange={(e) => setChatInput(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') handleSendChat();
+                      }}
+                      placeholder="Type your question to test the bot..."
+                      className="flex-1 px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:border-atx-gold focus:outline-none"
+                    />
                     <button
                       type="button"
-                      onClick={() => handleSimulatedAction(`Lock In Estimate: ${activeProto.pages.quote.baseRate}`)}
-                      className="w-full py-3 rounded-xl bg-gradient-to-r from-atx-gold to-atx-gold-light text-atx-navy-dark text-xs font-bold uppercase tracking-wider hover:brightness-110 shadow-md transition-all cursor-pointer"
+                      onClick={() => handleSendChat()}
+                      className="px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white text-xs font-bold uppercase transition-colors cursor-pointer"
                     >
-                      Test Simulated Order Confirmation &rarr;
+                      <Send className="w-3.5 h-3.5" />
                     </button>
                   </div>
                 </div>
@@ -523,16 +551,15 @@ export default function LiveDemoStudio() {
             {/* Bottom Bar: Action to build similar site */}
             <div className="bg-slate-900 px-6 py-4 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
               <div className="text-xs text-slate-300 text-center sm:text-left">
-                <span>Like this architecture? </span>
-                <strong className="text-atx-gold">{activeProto.title}</strong>
+                <span>Want an engineered platform like this for your business?</span>
               </div>
               <a
-                href={`https://wa.me/${COMPANY_INFO.whatsappNumber}?text=Hello%20ATX%20Technologies,%20I%20tested%20your%20live%20demo%20for:%20${encodeURIComponent(activeProto.title)}%20and%20would%20like%20a%20similar%20website%20for%20my%20business.`}
+                href={`https://wa.me/${COMPANY_INFO.whatsappNumber}?text=Hello%20ATX%20Technologies,%20I%20tested%20your%20interactive%20demo%20and%20would%20like%20to%20order%20a%20similar%20high-performance%20website%20for%20my%20business.`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-atx-navy-dark bg-gradient-to-r from-atx-gold to-atx-gold-light hover:brightness-110 transition-all shadow-md"
               >
-                <span>Build This Website For My Business</span>
+                <span>Request a Website Like This</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </a>
             </div>

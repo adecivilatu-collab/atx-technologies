@@ -3,12 +3,10 @@ import { ArrowRight, MessageSquare, Sparkles, CheckCircle2, Globe, Zap, ShieldCh
 import { COMPANY_INFO } from '../data/content';
 
 export default function Hero() {
-  const scrollToDemo = (e) => {
-    e.preventDefault();
+  const scrollToDemo = () => {
     const el = document.getElementById('live-demos');
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
-      window.location.hash = 'live-demos';
     }
   };
 
