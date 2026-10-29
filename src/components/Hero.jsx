@@ -2,7 +2,18 @@ import React from 'react';
 import { ArrowRight, MessageSquare, Sparkles, CheckCircle2, Globe, Zap, ShieldCheck } from 'lucide-react';
 import { COMPANY_INFO } from '../data/content';
 
-export default function Hero() {
+export default function Hero({ onOpenDemoModal }) {
+  const handleDemoClick = (e) => {
+    e.preventDefault();
+    if (onOpenDemoModal) {
+      onOpenDemoModal();
+    }
+    const el = document.getElementById('live-demos');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative overflow-hidden pt-12 pb-24 md:pt-20 md:pb-32 bg-radial-gradient">
       {/* Decorative background glow */}
@@ -42,13 +53,14 @@ export default function Hero() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
-            <a
-              href="#live-demos"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-bold text-sm uppercase tracking-wider text-atx-navy-dark bg-gradient-to-r from-atx-gold to-atx-gold-light hover:brightness-110 shadow-lg shadow-atx-gold/20 transition-all"
+            <button
+              type="button"
+              onClick={handleDemoClick}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-bold text-sm uppercase tracking-wider text-atx-navy-dark bg-gradient-to-r from-atx-gold to-atx-gold-light hover:brightness-110 shadow-lg shadow-atx-gold/20 transition-all cursor-pointer"
             >
               <span>View Live Demonstration</span>
               <ArrowRight className="w-4 h-4" />
-            </a>
+            </button>
             <a
               href={COMPANY_INFO.whatsappLink}
               target="_blank"

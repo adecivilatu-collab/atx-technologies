@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { Menu, X, ArrowUpRight, MessageSquare } from 'lucide-react';
 import { COMPANY_INFO } from '../data/content';
 
-export default function Navbar() {
+export default function Navbar({ onOpenDemoModal }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
     { label: 'Services', href: '#services' },
-    { label: 'Live Demos', href: '#live-demos' },
+    { label: 'Live Demos', href: '#live-demos', isDemo: true },
     { label: 'Portfolio', href: '#case-studies' },
     { label: 'AI Tools', href: '#digital-products' },
     { label: 'Academy', href: '#training' },
@@ -15,6 +15,14 @@ export default function Navbar() {
     { label: 'FAQ', href: '#faq' },
     { label: 'Get Quote', href: '#contact' }
   ];
+
+  const handleLinkClick = (e, link) => {
+    if (link.isDemo && onOpenDemoModal) {
+      e.preventDefault();
+      onOpenDemoModal();
+      document.getElementById('live-demos')?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <header className="sticky top-0 z-40 w-full backdrop-blur-md bg-atx-navy/85 border-b border-atx-navy-border/60 transition-colors">
@@ -45,6 +53,7 @@ export default function Navbar() {
               <a
                 key={link.label}
                 href={link.href}
+                onClick={(e) => handleLinkClick(e, link)}
                 className="text-xs font-semibold text-slate-300 hover:text-atx-gold transition-colors uppercase tracking-wider"
               >
                 {link.label}
@@ -55,7 +64,15 @@ export default function Navbar() {
           {/* Medium Screens (lg) */}
           <nav className="hidden md:flex xl:hidden items-center gap-3">
             <a href="#services" className="text-xs font-semibold text-slate-300 hover:text-atx-gold transition-colors uppercase">Services</a>
-            <a href="#live-demos" className="text-xs font-semibold text-atx-gold transition-colors uppercase">Live Demos</a>
+            <button
+              onClick={() => {
+                onOpenDemoModal?.();
+                document.getElementById('live-demos')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="text-xs font-semibold text-atx-gold transition-colors uppercase hover:underline"
+            >
+              Live Demos
+            </button>
             <a href="#case-studies" className="text-xs font-semibold text-slate-300 hover:text-atx-gold transition-colors uppercase">Portfolio</a>
             <a href="#digital-products" className="text-xs font-semibold text-slate-300 hover:text-atx-gold transition-colors uppercase">AI Tools</a>
             <a href="#contact" className="text-xs font-semibold text-slate-300 hover:text-atx-gold transition-colors uppercase">Get Quote</a>
@@ -110,7 +127,10 @@ export default function Navbar() {
             <a
               key={link.label}
               href={link.href}
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={(e) => {
+                setMobileMenuOpen(false);
+                handleLinkClick(e, link);
+              }}
               className="block py-2 text-base font-medium text-slate-200 hover:text-atx-gold"
             >
               {link.label}
